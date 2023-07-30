@@ -10,20 +10,27 @@ namespace RazorPagesMovie.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Rating",
+            migrationBuilder.AlterColumn<string>(
+                name: "Title",
                 table: "Movie",
                 type: "nvarchar(max)",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Rating",
-                table: "Movie");
+            migrationBuilder.AlterColumn<string>(
+                name: "Title",
+                table: "Movie",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
         }
     }
 }
