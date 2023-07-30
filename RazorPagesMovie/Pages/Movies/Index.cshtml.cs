@@ -37,20 +37,26 @@ namespace RazorPagesMovie.Pages.Movies
                                             orderby m.Genre
                                             select m.Genre;
 
+            //Use LINQ to get list of movies.
             var movies = from m in _context.Movie
                          select m;
 
+            //Verify if the title is different of null or empty.
             if (!string.IsNullOrEmpty(SearchString))
             {
                 movies = movies.Where(s => s.Title.Contains(SearchString));
             }
 
+            //Verify if the genre is different of null or empty.
             if (!string.IsNullOrEmpty(MovieGenre))
             {
                 movies = movies.Where(x => x.Genre == MovieGenre);
             }
 
+            //Fill the select list with different genres..
             Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
+
+            //Get genres.
             Movie = await movies.ToListAsync();
         }
     }
