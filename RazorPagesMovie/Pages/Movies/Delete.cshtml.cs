@@ -20,7 +20,7 @@ namespace RazorPagesMovie.Pages.Movies
         }
 
         [BindProperty]
-      public Movie Movie { get; set; } = default!;
+        public Movie Movie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
